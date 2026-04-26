@@ -1,0 +1,48 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const cases = await getCollection('work', ({ data }) => !data.draft);
+  return cases.map((c) => ({
+    params: { slug: c.slug },
+    props: { entry: c }
+  }));
+}
+
+interface Props {
+  entry: CollectionEntry<'work'>;
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+const { data } = entry;
+
+const metaParts = [data.role, data.company, data.year].filter(Boolean);
+---
+
+<BaseLayout title={`${data.title} — Camila Santos`} description={data.summary}>
+  <article class="case-page">
+    <a href="/" class="case-back">← Back home</a>
+
+    <div class="case-meta">
+      {metaParts.map((part, i) => (
+        <>
+          <span>{part}</span>
+          {i < metaParts.length - 1 && <span style="color:var(--muted)">·</span>}
+        </>
+      ))}
+    </div>
+
+    <h1 class="case-title">{data.title}</h1>
+    <p class="case-summary">{data.summary}</p>
+
+    <div class={`case-cover ${data.coverClass ?? ''}`}>
+      {data.cover && <img src={data.cover} alt={data.coverAlt ?? data.title} />}
+    </div>
+
+    <div class="case-body">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>

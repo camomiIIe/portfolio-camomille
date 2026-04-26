@@ -1,0 +1,29 @@
+---
+// CTA — Lottie sparkle (loaded from /assets/brilho2.json) + email + socials.
+export interface Props {
+  email?: string;
+  linkedin?: string;
+  behance?: string;
+  instagram?: string;
+}
+
+const {
+  email = 'camicristdosantos@gmail.com',
+  linkedin = '#',
+  behance = '#',
+  instagram = '#'
+} = Astro.props;
+---
+
+<section class="cta" id="contact">
+  <div class="cta-sparkle" data-lottie-src="/assets/brilho2.json" data-lottie-loop="true"></div>
+  <h2>Got a project?<br /><em>Let's talk.</em></h2>
+  <div class="cta-buttons">
+    <a href={`mailto:${email}`} class="cta-button">{email}</a>
+    <div class="social-buttons">
+      <a href={linkedin} class="cta-button cta-button-social" target="_blank" rel="noopener">LinkedIn</a>
+      <a href={behance} class="cta-button cta-button-social" target="_blank" rel="noopener">Behance</a>
+      <a href={instagram} class="cta-button cta-button-social" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+</section>

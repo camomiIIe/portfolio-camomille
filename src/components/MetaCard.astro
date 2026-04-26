@@ -1,0 +1,31 @@
+---
+// Floating meta card that bridges the pink hero into the white section.
+export interface Props {
+  currently?: string;
+  focus?: string;
+  tagline?: string;
+}
+
+const {
+  currently = 'at Itaú Unibanco',
+  focus = 'UX/UI · Motion · Illustration',
+  tagline = 'Since 2014 crafting systems and microinteractions — with the soul of <strong>product designer</strong> and the rigor of <strong>front-end developer</strong>.'
+} = Astro.props;
+---
+
+<section class="meta-bridge">
+  <div class="meta-card">
+    <div class="meta-col">
+      <div class="meta-label">Currently</div>
+      <div class="meta-value">{currently}</div>
+    </div>
+    <span class="meta-dot"></span>
+    <div class="meta-col">
+      <div class="meta-label">Focus</div>
+      <div class="meta-value">{focus}</div>
+    </div>
+    <span class="meta-dot"></span>
+    <p class="meta-tagline" set:html={tagline}></p>
+    <img class="meta-star" src="/assets/brilho-novo.svg" alt="" />
+  </div>
+</section>

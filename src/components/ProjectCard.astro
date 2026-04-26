@@ -1,0 +1,33 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+export interface Props {
+  project: CollectionEntry<'work'>;
+  number: string;
+}
+
+const { project, number } = Astro.props;
+const { data, slug } = project;
+---
+
+<a href={`/work/${slug}`} class="project reveal">
+  <div class="project-cover">
+    <span class="project-num">{number}</span>
+    {data.cover ? (
+      <img class="cover-art" src={data.cover} alt={data.coverAlt ?? data.title} />
+    ) : (
+      <div class={`cover-art ${data.coverClass ?? 'cover-placeholder'}`}>
+        {!data.coverClass && (
+          <div class="ph-text">
+            <strong>Slot for case</strong>
+            cover image goes here
+          </div>
+        )}
+      </div>
+    )}
+  </div>
+  <div class="project-meta">
+    <h3 class="project-title">{data.title}</h3>
+    <span class="project-tag">{data.discipline} · {data.year}</span>
+  </div>
+</a>
