@@ -504,7 +504,6 @@ section.about-teaser-wrapper { padding: 0 var(--gutter) 60px; max-width: var(--m
 }
 .about-photo {
   aspect-ratio: 4/5;
-  background: linear-gradient(135deg, #C8B8E8 0%, #E8C8D8 100%);
   border-radius: 20px;
   overflow: hidden;
   display: flex; align-items: center; justify-content: center;
@@ -515,7 +514,7 @@ section.about-teaser-wrapper { padding: 0 var(--gutter) 60px; max-width: var(--m
   object-fit: cover;
   display: block;
 }
-.about-photo span { color: var(--navy); opacity: 0.55; font-size: 13px; font-weight: 500; text-align: center; line-height: 1.5; padding: 16px; }
+.about-photo span { color: var(--navy); font-size: 13px; font-weight: 500; text-align: center; line-height: 1.5; padding: 16px; }
 .about-text h2 {
   font-size: clamp(26px, 3.6vw, 40px);
   font-weight: 700;
