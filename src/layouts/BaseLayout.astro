@@ -6,11 +6,13 @@ import Footer from '@/components/Footer.astro';
 export interface Props {
   title?: string;
   description?: string;
+  isHome?: boolean;
 }
 
 const {
   title = 'Camila Santos — Senior Product Designer',
-  description = 'Visual + motion design that makes products feel alive. Senior Product Designer focused on UX motion, design systems, and illustration.'
+  description = 'Visual + motion design that makes products feel alive. Senior Product Designer focused on UX motion, design systems, and illustration.',
+  isHome = false,
 } = Astro.props;
 ---
 
@@ -40,7 +42,7 @@ const {
   <title>{title}</title>
 </head>
 <body>
-  <Header />
+  <Header isHome={isHome} />
 
   <main>
     <slot />

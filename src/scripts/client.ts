@@ -35,6 +35,7 @@ function init() {
   const navLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>('nav a[data-section]'));
   const indicator = document.querySelector<HTMLSpanElement>('.nav-indicator');
   const sectionMap: Record<string, HTMLElement | null> = {
+    hero: document.getElementById('hero-pink'),
     work: document.getElementById('work'),
     about: document.getElementById('about'),
     contact: document.getElementById('contact'),
@@ -55,7 +56,7 @@ function init() {
   function updateActiveSection() {
     if (!navLinks.length) return;
     const triggerY = window.scrollY + window.innerHeight * 0.35;
-    let activeKey = 'work';
+    let activeKey = 'hero';
     Object.entries(sectionMap).forEach(([key, sec]) => {
       if (sec && sec.offsetTop <= triggerY) activeKey = key;
     });

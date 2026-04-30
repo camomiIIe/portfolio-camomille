@@ -115,8 +115,8 @@ header.pink-mode .nav-indicator { background: var(--yellow); }
 /* ====== Pink Hero ====== */
 .hero-pink {
   background: var(--pink);
-  padding: calc(var(--header-h) + 60px) var(--gutter) 160px;
-  min-height: 70vh;
+  padding: 120px var(--gutter) 140px;
+  min-height: 60vh;
   display: flex;
   align-items: center;
 }
@@ -573,8 +573,9 @@ section.about-teaser-wrapper { padding: 0 var(--gutter) 60px; max-width: var(--m
   letter-spacing: 0.06em;
 }
 .cta-button.cta-button-social:hover {
-  background: var(--navy);
-  color: var(--yellow);
+  background: var(--pink);
+  color: white;
+  border: 1.5px solid var(--pink);
 }
 
 /* ====== Footer ====== */

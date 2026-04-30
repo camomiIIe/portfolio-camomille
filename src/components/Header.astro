@@ -1,13 +1,15 @@
 ---
+const { isHome = false } = Astro.props;
 // Site header — checker bar (left) + nav (right).
 // Header switches between pink-mode (over hero) and white-mode (after scroll)
 // via JS in client.ts.
 ---
 
-<header id="site-header">
+<header id="site-header" class={isHome ? 'pink-mode' : ''}>
   <div class="checker" aria-hidden="true"></div>
   <nav>
     <ul>
+      <li><a href="/#hero-pink" data-section="hero">Home</a></li>
       <li><a href="/#work" data-section="work">Work</a></li>
       <li><a href="/#about" data-section="about">About</a></li>
       <li><a href="/#contact" data-section="contact">Contact</a></li>
