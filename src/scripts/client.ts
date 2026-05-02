@@ -108,7 +108,7 @@ function init() {
           container: el,
           renderer: 'svg',
           loop: el.dataset.lottieLoop !== 'false',
-          autoplay: true,
+          autoplay: el.dataset.lottieAutoplay !== 'false',
           animationData: data,
         });
       } catch (err) {
