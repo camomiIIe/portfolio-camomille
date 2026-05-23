@@ -104,13 +104,16 @@ function init() {
       try {
         const res = await fetch(src);
         const data = await res.json();
-        window.lottie.loadAnimation({
+        const animation = window.lottie.loadAnimation({
           container: el,
           renderer: 'svg',
           loop: el.dataset.lottieLoop !== 'false',
           autoplay: el.dataset.lottieAutoplay !== 'false',
           animationData: data,
         });
+        if (el.dataset.lottieAutoplay !== 'false') {
+          animation.play();
+        }
       } catch (err) {
         console.warn('Lottie failed to load:', src, err);
       }
