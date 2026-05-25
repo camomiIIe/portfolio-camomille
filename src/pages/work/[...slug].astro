@@ -15,7 +15,7 @@ interface Props {
 }
 
 const { entry } = Astro.props;
-const { Content, role, company, year, title, summary, cover, coverAlt, coverClass } = entry;
+const { Content, role, company, year, title, summary, cover, coverAlt, coverClass, hideCover } = entry;
 
 const metaParts = [role, company, year].filter(Boolean);
 ---
@@ -36,9 +36,11 @@ const metaParts = [role, company, year].filter(Boolean);
     <h1 class="case-title">{title}</h1>
     <p class="case-summary">{summary}</p>
 
-    <div class={`case-cover ${coverClass ?? ''}`}>
-      {cover && <img src={cover} alt={coverAlt ?? title} />}
-    </div>
+    {!hideCover && (
+      <div class={`case-cover ${coverClass ?? ''}`}>
+        {cover && <img src={cover} alt={coverAlt ?? title} />}
+      </div>
+    )}
 
     <div class="case-body">
       <Content />

@@ -11,6 +11,7 @@ export interface WorkItem {
   cover?: string;
   coverAlt?: string;
   coverClass?: string;
+  hideCover?: boolean;
   featured?: boolean;
   order: number;
   draft?: boolean;

@@ -1,0 +1,82 @@
+---
+export interface Props {
+  index: string;
+  name: string;
+  principle: string;
+  description: string;
+  media: string;
+  mediaType: string;
+}
+
+const { index, name, principle, description, media, mediaType } = Astro.props;
+---
+
+<article class="attribute-card">
+  <div class="attribute-copy">
+    <h3>{name}</h3>
+    <p class="attribute-principle">{principle}</p>
+    <p>{description}</p>
+  </div>
+  <div class="attribute-media">
+    <img src={media} alt={name} loading="lazy" />
+  </div>
+</article>
+
+<style>
+.attribute-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  padding: 36px;
+  border-radius: 24px;
+  background: rgba(36, 28, 73, 0.03);
+  border: 1px solid rgba(36, 28, 73, 0.08);
+  margin: 0 auto 28px;
+  max-width: min(100%, 1040px);
+}
+
+.attribute-copy {
+  display: grid;
+  gap: 16px;
+}
+
+.attribute-card h3 {
+  margin: 0;
+  font-size: clamp(1.75rem, 3vw, 2.4rem);
+  line-height: 1.05;
+  color: var(--pink);
+  font-weight: 800;
+}
+
+.attribute-principle {
+  margin: 0;
+  color: var(--navy);
+  font-weight: 700;
+}
+
+.attribute-card p {
+  margin: 0;
+  color: var(--navy);
+  line-height: 1.75;
+}
+
+.attribute-media {
+  display: flex;
+  justify-content: center;
+}
+
+.attribute-media img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 24px;
+  object-fit: cover;
+}
+
+@media (max-width: 900px) {
+  .attribute-card {
+    padding: 28px;
+  }
+}
+</style>

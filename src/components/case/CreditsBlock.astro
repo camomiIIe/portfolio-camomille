@@ -1,0 +1,64 @@
+---
+export interface Group {
+  role: string;
+  names: string[];
+  note?: string;
+}
+
+export interface Props {
+  groups: Group[];
+}
+
+const { groups = [] } = Astro.props;
+---
+
+<section class="credits-block">
+  <div class="credits-grid">
+    {groups.map((group) => (
+      <div class="credits-group">
+        <p class="credits-role">{group.role}</p>
+        <p class="credits-names">{group.names.join(', ')}</p>
+        {group.note ? <p class="credits-note">{group.note}</p> : null}
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+.credits-block {
+  margin: 40px 0;
+}
+
+.credits-grid {
+  display: grid;
+  gap: 28px;
+}
+
+.credits-group {
+  padding: 28px 32px;
+  border-radius: 20px;
+  background: rgba(36, 28, 73, 0.03);
+  border: 1px solid rgba(36, 28, 73, 0.08);
+}
+
+.credits-role {
+  margin: 0 0 12px;
+  font-size: 0.88rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.credits-names,
+.credits-note {
+  margin: 0;
+  color: var(--navy);
+  line-height: 1.75;
+}
+
+.credits-note {
+  margin-top: 12px;
+  color: var(--muted);
+}
+</style>

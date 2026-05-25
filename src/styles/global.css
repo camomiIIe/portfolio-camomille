@@ -636,7 +636,7 @@ footer {
   font-size: clamp(18px, 2vw, 22px);
   color: var(--muted);
   line-height: 1.55;
-  margin-bottom: 56px;
+  margin-bottom: 40px;
   max-width: 720px;
 }
 .case-cover {

@@ -1,0 +1,38 @@
+---
+export interface Props {
+  vimeoId: string;
+  title: string;
+  aspectRatio?: string;
+}
+
+const { vimeoId, title, aspectRatio = '56.25%' } = Astro.props;
+const src = `https://player.vimeo.com/video/${vimeoId}?badge=0&autopause=0&player_id=0&app_id=122963`;
+---
+
+<div class="video-embed" style={`padding-top: ${aspectRatio};`}>
+  <iframe
+    src={src}
+    title={title}
+    frameborder="0"
+    allow="autoplay; fullscreen; picture-in-picture"
+    allowfullscreen
+    loading="lazy"
+  ></iframe>
+</div>
+
+<style>
+.video-embed {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.video-embed iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+</style>

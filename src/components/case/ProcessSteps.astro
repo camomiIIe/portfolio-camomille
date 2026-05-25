@@ -1,0 +1,83 @@
+---
+export interface Step {
+  n: string;
+  title: string;
+  desc: string;
+}
+
+export interface Props {
+  steps: Step[];
+}
+
+const { steps = [] } = Astro.props;
+---
+
+<section class="process-steps">
+  <div class="process-steps-grid">
+    {steps.map((step) => (
+      <article class="process-step">
+        <span class="process-step-number">{step.n}</span>
+        <div>
+          <h3>{step.title}</h3>
+          <p>{step.desc}</p>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
+
+<style>
+.process-steps {
+  margin: 48px 0;
+}
+
+.process-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.process-step {
+  padding: 28px 24px;
+  border: 1px solid rgba(36, 28, 73, 0.08);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.process-step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 18px;
+  border-radius: 14px;
+  background: var(--pink);
+  color: white;
+  font-weight: 700;
+}
+
+.process-step h3 {
+  margin: 0 0 12px;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.process-step p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+@media (max-width: 900px) {
+  .process-steps-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .process-steps-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
