@@ -17,10 +17,6 @@ const work = defineCollection({
     draft: z.boolean().default(false),
     tags: z.array(z.string()).optional()
   })
-  ,
-  render: async (entry) => {
-    return await entry.render();
-  }
 });
 
 export const collections = { work };

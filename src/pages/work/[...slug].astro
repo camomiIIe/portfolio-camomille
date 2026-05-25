@@ -1,27 +1,26 @@
 ---
-import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import type { WorkItem } from '@/utils/work';
+import { workItems } from '@/utils/work';
 
 export async function getStaticPaths() {
-  const cases = await getCollection('work', ({ data }) => !data.draft);
-  return cases.map((c) => ({
-    params: { slug: c.slug },
-    props: { entry: c }
+  return workItems.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry }
   }));
 }
 
 interface Props {
-  entry: CollectionEntry<'work'>;
+  entry: WorkItem;
 }
 
 const { entry } = Astro.props;
-const { Content } = await entry.render();
-const { data } = entry;
+const { Content, role, company, year, title, summary, cover, coverAlt, coverClass } = entry;
 
-const metaParts = [data.role, data.company, data.year].filter(Boolean);
+const metaParts = [role, company, year].filter(Boolean);
 ---
 
-<BaseLayout title={`${data.title} — Camila Santos`} description={data.summary}>
+<BaseLayout title={`${title} — Camila Santos`} description={summary}>
   <article class="case-page">
     <a href="/" class="case-back">← Back home</a>
 
@@ -34,11 +33,11 @@ const metaParts = [data.role, data.company, data.year].filter(Boolean);
       ))}
     </div>
 
-    <h1 class="case-title">{data.title}</h1>
-    <p class="case-summary">{data.summary}</p>
+    <h1 class="case-title">{title}</h1>
+    <p class="case-summary">{summary}</p>
 
-    <div class={`case-cover ${data.coverClass ?? ''}`}>
-      {data.cover && <img src={data.cover} alt={data.coverAlt ?? data.title} />}
+    <div class={`case-cover ${coverClass ?? ''}`}>
+      {cover && <img src={cover} alt={coverAlt ?? title} />}
     </div>
 
     <div class="case-body">

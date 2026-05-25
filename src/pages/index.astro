@@ -5,12 +5,13 @@ import MetaCard from '@/components/MetaCard.astro';
 import WorkSection from '@/components/WorkSection.astro';
 import AboutTeaser from '@/components/AboutTeaser.astro';
 import CTA from '@/components/CTA.astro';
+import { workItems } from '@/utils/work';
 ---
 
 <BaseLayout isHome>
   <Hero />
   <MetaCard />
-  <WorkSection />
+  <WorkSection work={workItems} />
   <AboutTeaser />
   <CTA linkedin="https://www.linkedin.com/in/camilasantos1294/" behance="https://www.behance.net/camilacsantos" instagram="https://www.instagram.com/_.camomille" />
 </BaseLayout>

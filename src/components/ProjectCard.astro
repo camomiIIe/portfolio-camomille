@@ -1,23 +1,23 @@
 ---
-import type { CollectionEntry } from 'astro:content';
+import type { WorkItem } from '@/utils/work';
 
 export interface Props {
-  project: CollectionEntry<'work'>;
+  project: WorkItem;
   number: string;
 }
 
 const { project, number } = Astro.props;
-const { data, slug } = project;
+const { slug, title, discipline, year, cover, coverAlt, coverClass } = project;
 ---
 
 <a href={`/work/${slug}`} class="project reveal">
   <div class="project-cover">
     <span class="project-num">{number}</span>
-    {data.cover ? (
-      <img class="cover-art" src={data.cover} alt={data.coverAlt ?? data.title} />
+    {cover ? (
+      <img class="cover-art" src={cover} alt={coverAlt ?? title} />
     ) : (
-      <div class={`cover-art ${data.coverClass ?? 'cover-placeholder'}`}>
-        {!data.coverClass && (
+      <div class={`cover-art ${coverClass ?? 'cover-placeholder'}`}>
+        {!coverClass && (
           <div class="ph-text">
             <strong>Slot for case</strong>
             cover image goes here
@@ -27,7 +27,7 @@ const { data, slug } = project;
     )}
   </div>
   <div class="project-meta">
-    <h3 class="project-title">{data.title}</h3>
-    <span class="project-tag">{data.discipline} · {data.year}</span>
+    <h3 class="project-title">{title}</h3>
+    <span class="project-tag">{discipline} · {year}</span>
   </div>
 </a>

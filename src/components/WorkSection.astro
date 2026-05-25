@@ -1,14 +1,17 @@
 ---
-import { getCollection } from 'astro:content';
+import type { WorkItem } from '@/utils/work';
 import FeaturedProject from './FeaturedProject.astro';
 import ProjectCard from './ProjectCard.astro';
 
-// Pull cases from the content collection, filter drafts, sort by `order`.
-const allWork = (await getCollection('work', ({ data }) => !data.draft))
-  .sort((a, b) => a.data.order - b.data.order);
+export interface Props {
+  work: WorkItem[];
+}
 
-const featured = allWork.find((w) => w.data.featured) ?? allWork[0];
-const others = allWork.filter((w) => w.id !== featured?.id);
+const { work } = Astro.props;
+
+const allWork = [...work].sort((a, b) => a.order - b.order);
+const featured = allWork.find((w) => w.featured) ?? allWork[0];
+const others = allWork.filter((w) => w.slug !== featured?.slug);
 ---
 
 <section class="work" id="work">

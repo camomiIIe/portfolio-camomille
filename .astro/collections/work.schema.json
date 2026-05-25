@@ -1,66 +1,60 @@
 {
-  "$ref": "#/definitions/work",
-  "definitions": {
-    "work": {
-      "type": "object",
-      "properties": {
-        "title": {
-          "type": "string"
-        },
-        "role": {
-          "type": "string"
-        },
-        "company": {
-          "type": "string"
-        },
-        "year": {
-          "type": "number"
-        },
-        "discipline": {
-          "type": "string"
-        },
-        "summary": {
-          "type": "string"
-        },
-        "cover": {
-          "type": "string"
-        },
-        "coverAlt": {
-          "type": "string"
-        },
-        "coverClass": {
-          "type": "string"
-        },
-        "featured": {
-          "type": "boolean",
-          "default": false
-        },
-        "order": {
-          "type": "number",
-          "default": 99
-        },
-        "draft": {
-          "type": "boolean",
-          "default": false
-        },
-        "tags": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "$schema": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "title",
-        "year",
-        "discipline",
-        "summary"
-      ],
-      "additionalProperties": false
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "role": {
+      "type": "string"
+    },
+    "company": {
+      "type": "string"
+    },
+    "year": {
+      "type": "number"
+    },
+    "discipline": {
+      "type": "string"
+    },
+    "summary": {
+      "type": "string"
+    },
+    "cover": {
+      "type": "string"
+    },
+    "coverAlt": {
+      "type": "string"
+    },
+    "coverClass": {
+      "type": "string"
+    },
+    "featured": {
+      "default": false,
+      "type": "boolean"
+    },
+    "order": {
+      "default": 99,
+      "type": "number"
+    },
+    "draft": {
+      "default": false,
+      "type": "boolean"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "$schema": {
+      "type": "string"
     }
   },
-  "$schema": "http://json-schema.org/draft-07/schema#"
+  "required": [
+    "title",
+    "year",
+    "discipline",
+    "summary"
+  ]
 }
