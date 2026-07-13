@@ -5,13 +5,15 @@ export interface Props {
   linkedin?: string;
   behance?: string;
   instagram?: string;
+  resume?: string;
 }
 
 const {
   email = 'camicristdosantos@gmail.com',
   linkedin = '#',
   behance = '#',
-  instagram = '#'
+  instagram = '#',
+  resume = '/assets/camila-santos-resume.pdf'
 } = Astro.props;
 ---
 
@@ -21,6 +23,7 @@ const {
   <div class="cta-buttons">
     <a href={`mailto:${email}`} class="cta-button">{email}</a>
     <div class="social-buttons">
+      <a href={resume} class="cta-button cta-button-social" download>Download CV</a>
       <a href={linkedin} class="cta-button cta-button-social" target="_blank" rel="noopener">LinkedIn</a>
       <a href={behance} class="cta-button cta-button-social" target="_blank" rel="noopener">Behance</a>
       <a href={instagram} class="cta-button cta-button-social" target="_blank" rel="noopener">Instagram</a>
