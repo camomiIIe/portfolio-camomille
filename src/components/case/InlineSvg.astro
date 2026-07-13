@@ -1,0 +1,18 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+
+export interface Props {
+  src: string; // path relative to /public, e.g. "/assets/will-bank/slides/circulo.svg"
+  alt: string; // accessible label, applied via role="img" aria-label
+}
+
+const { src, alt } = Astro.props;
+const filePath = path.join(process.cwd(), 'public', src);
+let svg = fs.readFileSync(filePath, 'utf-8');
+
+// Strip fixed width/height from the root <svg> so it scales via CSS instead.
+svg = svg.replace(/<svg\s/, `<svg role="img" aria-label="${alt.replace(/"/g, '&quot;')}" `);
+---
+
+<Fragment set:html={svg} />

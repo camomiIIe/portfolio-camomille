@@ -1,6 +1,5 @@
 ---
 import type { WorkItem } from '@/utils/work';
-import FeaturedProject from './FeaturedProject.astro';
 import ProjectCard from './ProjectCard.astro';
 
 export interface Props {
@@ -10,8 +9,6 @@ export interface Props {
 const { work } = Astro.props;
 
 const allWork = [...work].sort((a, b) => a.order - b.order);
-const featured = allWork.find((w) => w.featured) ?? allWork[0];
-const others = allWork.filter((w) => w.slug !== featured?.slug);
 ---
 
 <section class="work" id="work">
@@ -23,11 +20,21 @@ const others = allWork.filter((w) => w.slug !== featured?.slug);
     </a>
   </div>
 
-  {featured && <FeaturedProject project={featured} />}
-
-  <div class="project-grid-3">
-    {others.map((project, i) => (
-      <ProjectCard project={project} number={String(i + 2).padStart(2, '0')} />
+  <div class="project-grid-3" id="projects">
+    {allWork.map((project, i) => (
+      <ProjectCard project={project} number={String(i + 1).padStart(2, '0')} />
     ))}
+    <div class="project project--soon reveal">
+      <div class="project-cover cover-placeholder">
+        <div class="ph-text">
+          <strong>More case studies</strong>
+          coming soon
+        </div>
+      </div>
+      <div class="project-meta">
+        <span class="project-title">Work in progress</span>
+        <span class="project-tag">2026</span>
+      </div>
+    </div>
   </div>
 </section>
