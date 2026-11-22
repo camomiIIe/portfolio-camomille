@@ -1,12 +1,13 @@
 ---
 export interface Props {
-  vimeoId: string;
+  vimeoId?: string;
+  src?: string;
   title: string;
   aspectRatio?: string;
 }
 
-const { vimeoId, title, aspectRatio = '56.25%' } = Astro.props;
-const src = `https://player.vimeo.com/video/${vimeoId}?badge=0&autopause=0&player_id=0&app_id=122963`;
+const { vimeoId, src: srcProp, title, aspectRatio = '56.25%' } = Astro.props;
+const src = srcProp ?? `https://player.vimeo.com/video/${vimeoId}?badge=0&autopause=0&player_id=0&app_id=122963`;
 ---
 
 <div class="video-embed" style={`padding-top: ${aspectRatio};`}>
