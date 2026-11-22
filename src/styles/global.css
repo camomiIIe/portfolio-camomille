@@ -143,7 +143,7 @@ header.pink-mode .nav-indicator { background: var(--yellow); }
 }
 
 .hero-display {
-  font-size: clamp(36px, 5.4vw, 76px);
+  font-size: clamp(30px, 4.6vw, 62px);
   font-weight: 700;
   color: white;
   line-height: 1.08;
